@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import InkeepChat from "./inkeep-js";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +30,18 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+
+        <Script
+          type="module"
+          src="https://cdn.jsdelivr.net/npm/@inkeep/cxkit-js@0.5/dist/embed.js"
+          defer
+          crossOrigin="anonymous"
+        ></Script>
+
+        <Script defer id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=f2f70bd4-fb3e-4390-9d40-d8284d25920b"> </Script>
+
+        <InkeepChat />
+
       </body>
     </html>
   );

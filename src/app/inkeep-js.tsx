@@ -197,7 +197,7 @@ export default function InkeepChat() {
 
             window.zE('messenger:set', 'conversationFields', [
               {
-                id: '43234535824019', // id of the field in zendesk
+                id: '43234535824019', // id of the custom field in zendesk, must be named "Inkeep Conversation ID"
                 value: conversation?.id || '',
               }
             ], openWidget)

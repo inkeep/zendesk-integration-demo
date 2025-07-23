@@ -19,6 +19,8 @@ export async function POST(req: NextRequest) {
       ...rest
     } = await req.json();
 
+    const orgName = process.env.ORG_NAME || 'Inkeep';
+
     const response = await fetch("https://api.inkeep.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -30,7 +32,7 @@ export async function POST(req: NextRequest) {
         messages: [
           {
             role: "system",
-            content: `The below is a conversation between a Datadog customer and an AI support assistant. The user has interacted with the assistant but has indicated they'd like to talk directly to the Datadog support team.
+            content: `The below is a conversation between a ${orgName} customer and an AI support assistant. The user has interacted with the assistant but has indicated they'd like to talk directly to the ${orgName} support team.
   
   Given the transcript of the AI chat conversation below, generate a handoff summary. This summary will be shown as the first message in the conversation. The summary should focus on all the key details about the user's scenario/question, and which parts of it remain unaddressed. The end-user and support agent will both see this summary, so make the tone appropriate for both. As needed, use adverbs/pronouns from the perspective of the end-user. Keep things objective, direct, and to the point, the goal is to pass on the necessary context for the support team so they don't need to reference the full AI chat conversation, while keeping it light/to the point.
   

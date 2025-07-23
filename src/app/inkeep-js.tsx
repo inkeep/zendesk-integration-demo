@@ -2,7 +2,7 @@
 
 
 import {
-  type ConversationMessage,
+  // type ConversationMessage,
   type AIChatFormSettings,
   type InkeepComponentInstance,
   type InkeepJS,
@@ -147,22 +147,22 @@ const styleOverrides = `
 }
 `
 
-const summarizeConversation = async (messages: ConversationMessage[], 
-) => {
-  const res = await fetch('/api/summarize', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      messages,
-    }),
-  });
+// const summarizeConversation = async (messages: ConversationMessage[],
+// ) => {
+//   const res = await fetch('/api/summarize', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       messages,
+//     }),
+//   });
 
-  if (!res.ok) {
-    throw new Error(await res.text());
-  }
+//   if (!res.ok) {
+//     throw new Error(await res.text());
+//   }
 
-  return res.json(); // Inkeep’s response JSON
-}
+//   return res.json(); // Inkeep’s response JSON
+// }
 
 export default function InkeepChat() {
   const EmbeddedChatRef = useRef<InkeepComponentInstance | undefined>(undefined);
@@ -188,15 +188,6 @@ export default function InkeepChat() {
           window.zE('messenger', 'close');
           setIsHidden(true) // close the inkeep chat
 
-          let summary = '';
-          if (conversation?.messages?.length && conversation?.messages?.length > 0) {
-            try {
-              const data = await summarizeConversation(conversation?.messages || [])
-              summary = data.choices[0].message.content
-            } catch (error) {
-              console.error(error);
-            }
-          }
           try {
 
             const openWidget = () => {
@@ -206,12 +197,8 @@ export default function InkeepChat() {
 
             window.zE('messenger:set', 'conversationFields', [
               {
-                id: '42983902674323', // id of the field in zendesk
-                value: summary,
-              },
-              {
-                id: '43076034383251', // id of the field in zendesk
-                value: conversation?.id ? `https://portal.inkeep.com/inkeep/projects/${conversation?.projectId}/chat/chat-sessions?conversationId=${conversation?.id}` : '',
+                id: '43234535824019', // id of the field in zendesk
+                value: conversation?.id || '',
               }
             ], openWidget)
           } catch (error) {

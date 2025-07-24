@@ -183,7 +183,7 @@ export default function InkeepChat() {
     ],
     buttons: {
       submit: {
-        label: "Start Live Chat",
+        label: "Start live chat",
         onSubmit: async ({ values, conversation }) => {
           window.zE('messenger', 'close');
           setIsHidden(true) // close the inkeep chat
@@ -241,7 +241,7 @@ export default function InkeepChat() {
         },
         icon: { builtIn: "IoHelpBuoyOutline" },
         name:
-          "Support"
+          "Start a live chat"
       }],
       aiAssistantAvatar: 'https://imgix.datadoghq.com/img/dd_logo_n_70x75.png',
     },

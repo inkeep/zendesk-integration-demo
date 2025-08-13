@@ -229,7 +229,7 @@ export default function InkeepChat() {
       },
     } as InkeepBaseSettings,
     aiChatSettings: {
-      introMessage: `Hi! \n\n I'm an AI assistant trained on documentation, help articles, and other content. \n\n Ask me anything about \`Datadog\`. \n\n Please do not provide sensitive or personal information. AI answers are not guaranteed to be accurate in all cases.`,
+      introMessage: `Hi! \n\n I'm an AI assistant trained on documentation, help articles, and other content. \n\n Ask me anything about \`Datadog\`. \n\n This tool is for general guidance only and is not intended to process confidential or sensitive information. Do not enter any confidential, sensitive, or customer-specific data from your Datadog environment into this chat.`,
       exampleQuestions: [
         "How to send OpenTelemetry data to Datadog?",
         "How to send Notifications to Slack?",
